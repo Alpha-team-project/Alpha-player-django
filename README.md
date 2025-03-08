@@ -1,3 +1,6 @@
+# Tailwind
+https://django-tailwind.readthedocs.io/en/latest/installation.html
+
 # Market Place
 A Django website made to place and manage items on the platform to simplify shopping.
 

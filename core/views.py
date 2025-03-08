@@ -1,9 +1,11 @@
 from django.shortcuts import render,redirect
 from item.models import Category, Item
 from django.contrib.auth import logout, login
+from django.contrib.auth.decorators import login_required
 
 from .forms import SignupForm
 
+@login_required(login_url="/signup/")
 def index(request):
     items = Item.objects.filter(is_sold=False)[0:6]
     categories = Category.objects.all()
