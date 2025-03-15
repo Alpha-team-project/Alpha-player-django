@@ -15,8 +15,15 @@
                         </div>
                         <div class="p-6 p-3 bg-white dark:bg-gray-900 flex flex-wrap sm:justify-between justify-center  rounded-b-xl ">
                             <div>
-                                <h2 class="sm:text-2xl break-words">{{ item.name }}</h2>
-                                <p class="text-gray-500">${{item.price}}</p>
+                                <h2 class="sm:text-2xl break-words">{{ item.title }}</h2>
+                                <p class="text-gray-500">${{item.description}}</p>
+                                <p class="text-gray-500">${{item.author}}</p>
+                                {% if item.file %}
+                                    <audio controls class="w-full mt-2">
+                                        <source src="{{ item.file.url }}" type="audio/mp3">
+                                        Your browser does not support the audio element.
+                                    </audio>
+                                {% endif %}
                             </div>
                             <div >
                                 <p class=" hidden sm:block bg-gray-200 dark:bg-gray-800 sm:px-3 sm:py-2  rounded-xl">{{ item.category }}</p>

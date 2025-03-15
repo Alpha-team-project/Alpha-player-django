@@ -1,6 +1,6 @@
 from django.shortcuts import render,get_object_or_404,redirect
 
-from item.models import Item, Category
+from item.models import Music, Category
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from .forms import CategoryForm
@@ -8,7 +8,7 @@ from .forms import CategoryForm
 
 @login_required
 def index(request):
-    items = Item.objects.filter(created_by = request.user)
+    items = Music.objects.filter(created_by = request.user)
     all_users = User.objects.all()
     categories = Category.objects.all()
 
