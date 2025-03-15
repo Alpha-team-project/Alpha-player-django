@@ -4,11 +4,11 @@ from  . import views
 app_name = 'item'
 
 urlpatterns = [
-    path('',views.items, name='items'),
-    path('<int:pk>/', views.detail, name = 'detail'),
-    path('new/',views.new, name='new'),
-    path('<int:pk>/delete', views.delete, name = 'delete'),
-    path('<int:pk>/edit', views.edit, name = 'edit'),
+    path('',views.music_list, name='items'),
+    path('<int:pk>/', views.music_detail, name = 'detail'),
+    path('new/',views.music_new, name='new'),
+    path('<int:pk>/delete', views.music_delete, name = 'delete'),
+    path('<int:pk>/edit', views.music_edit, name = 'edit'),
 
 
      

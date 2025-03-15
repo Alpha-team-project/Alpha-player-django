@@ -1,100 +1,96 @@
-from django import forms 
+from django import forms
+from .models import Category, Author, Music
 
-from . models import Item
-
-INPUT_CLASSES = 'w-full py-4 px-6 rounded-xl border dark:text-white dark:bg-gray-900'
-SIZE_CHOICES = [
-        ('','None'),
-        ('S', 'S'),
-        ('M', 'M'),
-        ('L', 'L'),
-        ('XL', 'XL'),
-        ('XXL', 'XXL'),
-    ]
-COLOR_CHOICES = [
-        ('','None'),
-        ('Red', 'Red'),
-        ('Blue', 'Blue'),
-        ('Violet', 'Violet'),
-        ('Orange', 'Orange'),
-        ('Black', 'Black'),
-        ('Green', 'Green'),
-        ('White', 'White'),
-    ]
-
-GENDER_CHOICES = [
-        ('','Not specified'),
-        ('Male', 'Male'),
-        ('Female', 'Female'),
-        ('Other', 'Other'),
-    ]
-
-class NewItemForm(forms.ModelForm):
-
-    # size = forms.ChoiceField(choices=SIZE_CHOICES)
+class CategoryForm(forms.ModelForm):
     class Meta:
-        model = Item
-        fields = ('image','category','name','price','size','color','gender','description',)
-
+        model = Category
+        fields = ['name']
         widgets = {
-            'category':forms.Select(attrs={
-                'class':INPUT_CLASSES
+            'name': forms.TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Enter category name'
             }),
-            'name':forms.TextInput(attrs={
-                'class':INPUT_CLASSES
-            }),
-            'description':forms.Textarea(attrs={
-                'class':INPUT_CLASSES,
-                'rows':4
-            }),
-            'price':forms.TextInput(attrs={
-                'class':INPUT_CLASSES
-            }),
-            'image':forms.FileInput(attrs={
-                'class':INPUT_CLASSES
-            }),
-            'size':forms.Select(attrs={
-                'class':INPUT_CLASSES
-            },choices=SIZE_CHOICES),
-            'color':forms.SelectMultiple(attrs={
-                'class':INPUT_CLASSES
-            },choices=COLOR_CHOICES),
-            'gender':forms.Select(attrs={
-                'class':INPUT_CLASSES
-            },choices=GENDER_CHOICES),
         }
-        empty_label = 'Select category'
+        labels = {
+            'name': 'Category Name',
+        }
+
+# Form for Author model
+class AuthorForm(forms.ModelForm):
+    class Meta:
+        model = Author
+        fields = ['full_name', 'image', 'description']
+        widgets = {
+            'full_name': forms.TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Enter full name'
+            }),
+            'image': forms.FileInput(attrs={
+                'class': 'form-control-file'
+            }),
+            'description': forms.Textarea(attrs={
+                'class': 'form-control',
+                'rows': 4,
+                'placeholder': 'Enter author description'
+            }),
+        }
+        labels = {
+            'full_name': 'Full Name',
+            'image': 'Profile Image',
+            'description': 'Description',
+        }
+
+class MusicForm(forms.ModelForm):
+    class Meta:
+        model = Music
+        fields = ['title', 'author', 'description', 'length', 'file', 
+                 'lyrics', 'category', 'image']
+        widgets = {
+            'title': forms.TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Enter music title'
+            }),
+            'author': forms.Select(attrs={
+                'class': 'form-control'
+            }),
+            'description': forms.Textarea(attrs={
+                'class': 'form-control',
+                'rows': 4,
+                'placeholder': 'Enter description'
+            }),
+            'length': forms.NumberInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Length in seconds'
+            }),
+            'file': forms.FileInput(attrs={
+                'class': 'form-control-file'
+            }),
+            'lyrics': forms.Textarea(attrs={
+                'class': 'form-control',
+                'rows': 6,
+                'placeholder': 'Enter lyrics'
+            }),
+            'category': forms.Select(attrs={
+                'class': 'form-control'
+            }),
+            'image': forms.FileInput(attrs={
+                'class': 'form-control-file'
+            }),
+        }
+        labels = {
+            'title': 'Title',
+            'author': 'Author',
+            'description': 'Description',
+            'length': 'Length (seconds)',
+            'file': 'Audio File',
+            'lyrics': 'Lyrics',
+            'category': 'Category',
+            'image': 'Cover Image',
+        }
+
     def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.fields['category'].empty_label = 'Select category'
-        self.fields['category'].initial = ''
-
-
-# edit
-
-class EditItemForm(forms.ModelForm):
-    class Meta:
-        model = Item
-        fields = ('is_sold','image','name','size','color','description',)
-
-        widgets = {
-            'name':forms.TextInput(attrs={
-                'class':INPUT_CLASSES
-            }),
-            'description':forms.Textarea(attrs={
-                'class':INPUT_CLASSES,
-                'rows':4
-            }),
-            'image':forms.FileInput(attrs={
-                'class':INPUT_CLASSES
-            }),
-            'size':forms.Select(attrs={
-                'class':INPUT_CLASSES
-            },choices=SIZE_CHOICES),
-            'color':forms.SelectMultiple(attrs={
-                'class':INPUT_CLASSES
-            },choices=COLOR_CHOICES),
-            'is_sold':forms.CheckboxInput(attrs={
-                'class':'text-left accent-emerald-500/25 w-5 h-5'
-            }),
-        }
+        user = kwargs.pop('user', None)
+        super(MusicForm, self).__init__(*args, **kwargs)
+        # limits authors to the current user's author profile
+        if user and hasattr(user, 'author_profile'):
+            self.fields['author'].queryset = Author.objects.filter(user=user)

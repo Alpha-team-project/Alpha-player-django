@@ -1,9 +1,9 @@
 from django.db import models
-from item.models import Item
+from item.models import Music
 from django.contrib.auth.models import User
 
 class Conversation(models.Model):
-    item = models.ForeignKey(Item, related_name='conversations', on_delete=models.CASCADE)
+    item = models.ForeignKey(Music, related_name='conversations', on_delete=models.CASCADE)
     members = models.ManyToManyField(User, related_name='conversations')
     created_at = models.DateTimeField(auto_now_add=True)
     modified_at = models.DateTimeField(auto_now=True)
@@ -11,8 +11,8 @@ class Conversation(models.Model):
     class Meta:
         ordering = ('-modified_at',)
     def __str__(self):
-        return self.item.name
-    
+        return self.item.title
+
 class ConversationMessage(models.Model):
     conversation = models.ForeignKey(Conversation, related_name='messages', on_delete=models.CASCADE)
     content = models.TextField()
@@ -21,4 +21,3 @@ class ConversationMessage(models.Model):
 
     def __str__(self):
         return self.content
-    
