@@ -150,3 +150,7 @@ TAILWIND_APP_NAME = 'theme'
 SECURE_SSL_REDIRECT=False
 SESSION_COOKIE_SECURE=False
 CSRF_COOKIE_SECURE=False
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://alpha-player.bahrom04.uz"
+]
