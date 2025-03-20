@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 
 from .forms import SignupForm
 
-@login_required(login_url="/signup/")
+# @login_required(login_url="/signup/")
 def index(request):
     items = Music.objects.filter(deleted_at__isnull=True)[0:6]
     categories = Category.objects.all()
