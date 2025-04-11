@@ -1,6 +1,0 @@
-django
-pillow
-
-dotenv
-
-django-tailwind
