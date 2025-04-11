@@ -1,0 +1,88 @@
+{% extends 'core/base.html' %}
+
+{% block title %}{{ item.name }}{% endblock title %}
+
+{% block content %}
+
+<div class="sm:grid grid-cols-5 gap-6">
+    <div class="col-span-3 m-3 ">
+        <img src="{{ item.image.url }}" class="rounded-xl object-cover mx-auto dark:brightness-75" style="width: 100%; max-width: 600px; height: auto; max-height: 600px;" alt="">
+    </div>
+
+    <div class="col-span-2 p-6 bg-gray-100 dark:text-white dark:bg-gray-800 rounded-xl text-center md:text-left">
+
+        <div class="sm:flex flex-col justify-between md:w-3/4">
+            <div>
+                <h1 class="text-gray-500 dark:text-white md:text-3xl text-left">${{item.title}}</h1>
+            </div>
+            {% if item.length %}
+            <div>
+                <p>Length: {{ item.length }}</p>
+            </div>
+            {% endif %}
+            {% if item.lyrics %}
+
+                <p>Colors: {{ item.lyrics }}</p>
+            {%  endif %}
+
+            {% if item.file %}
+                <audio controls class="w-full mt-2">
+                    <source src="{{ item.file.url }}" type="audio/mp3">
+                    Your browser does not support the audio element.
+                </audio>
+            {% endif %}
+        </div>
+
+
+{#        {% if request.user == item.created_by %}#}
+{#        <div class="mt-6 p-6 bg-white dark:bg-gray-900  dark:text-white rounded-xl text-center md:text-left   ">#}
+{#            <p>This is your item!</p>#}
+{#            <a href="{% url 'item:edit' item.id %}" class="inline-block   mt-6 px-6 py-3 text-lg font-semibold bg-yellow-500 text-white rounded-xl">Edit</a>#}
+{#            <a href="{% url 'item:delete'  item.id %}" class="inline-block   mt-6 px-6 py-3 text-lg font-semibold bg-red-500 text-white rounded-xl">Delete</a>#}
+{#        </div>#}
+{#        {% else %}  #}
+{#        <a href="{% url 'conversation:new' item.id %}" class="inline-block mt-6 px-6 py-3 text-lg font-semibold bg-teal-500 text-white rounded-3xl hover:bg-teal-700">Connect {{item.created_by.username}}</a>#}
+{#        {% comment %} <a href="{% url 'payment:payment' item.id %}" class="inline-block mt-6 px-6 py-3 text-lg font-semibold bg-orange-500 text-white rounded-3xl hover:bg-orange-700">Buy now</a> {% endcomment %}#}
+{##}
+{#        {% endif %}#}
+
+        {% if item.description %}
+        <p class="text-gray-700 dark:text-white">
+            <strong class="text-gray-500 dark:text-white">Description:</strong>
+            <br>
+            {{item.description}}
+        </p>
+        {% endif %}
+
+    </div>
+
+</div>
+
+
+{#<div class="mt-6 px-6 py-12 bg-gray-100 dark:text-white dark:bg-gray-800 rounded-xl">#}
+{#    <h2 class="mb-6 text-2xl text-center">Related items</h2>#}
+{##}
+{#    <div class="grid md:grid-cols-5 grid-cols-2 gap-3">#}
+{#        {% for item in related_items %}#}
+{#            <div>#}
+{#                <a href="{% url 'item:detail' item.id %}">#}
+{#                    <div class="md-shrink-0">#}
+{#                        <img src="{{ item.image.url }}" class="rounded-t-xl dark:brightness-50">#}
+{#                    </div>#}
+{#                    <div class="p-3 bg-white dark:text-white dark:bg-gray-900 rounded-b-xl ">#}
+{#                        <h2 class="sm:text-xl break-words">{{ item.name }}</h2>#}
+{#                        <h1 class="text-gray-500 ">{{item.price}}</h1>#}
+{#                    </div>#}
+{#                </a>    #}
+{#            </div>#}
+{##}
+{#        {% endfor %}#}
+{##}
+{#    </div>#}
+{#</div>#}
+
+{% endblock content %}
+
+
+
+{#<h1>Hello from Otabek</h1>#}
