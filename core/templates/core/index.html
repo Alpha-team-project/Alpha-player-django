@@ -3,38 +3,49 @@
 {% block title %}Welcome {% endblock title %}
 
 {% block content %}
-    <div class="mt-6 sm:px-6 px-3 w-full py-12 dark:text-white dark:bg-gray-800 dark:text-white bg-gray-100 rounded-xl shadow-xl">
+    <div class="mt-6 sm:px-6 px-3 w-full py-12  bg-gray-800 text-white rounded-xl shadow-xl">
         <h2 class="md:mb-12 mb-3 font-medium text-2xl text-center">Newest items</h2>
 
-        <div class="grid grid-cols-2 md:grid-cols-3  lg:grid-cols-4 items-stretch gap-3  ">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {% for item in items %}
-                <div class="shadow-xl h-fit  rounded-b-xl  ">
-                    <a href="{% url 'item:detail' item.id %}">
-                        <div class="md:shrink-0">
-                            <img src="{{ item.image.url }}" class="w-full rounded-t-lg dark:brightness-50 " alt="Product image">
-                        </div>
-                        <div class="p-6 p-3 bg-white dark:bg-gray-900 flex flex-wrap sm:justify-between justify-center  rounded-b-xl ">
-                            <div>
-                                <h2 class="sm:text-2xl break-words">{{ item.title }}</h2>
-                                <p class="text-gray-500">${{item.description}}</p>
-                                <p class="text-gray-500">${{item.author}}</p>
-                                {% if item.file %}
-                                    <audio controls class="w-full mt-2">
-                                        <source src="{{ item.file.url }}" type="audio/mp3">
-                                        Your browser does not support the audio element.
-                                    </audio>
-                                {% endif %}
-                            </div>
-                            <div >
-                                <p class=" hidden sm:block bg-gray-200 dark:bg-gray-800 sm:px-3 sm:py-2  rounded-xl">{{ item.category }}</p>
-                            </div>
-                        </div>
-                    </a>
+            <div class="bg-gray-900 rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col">
+                <a href="{% url 'item:music_detail' item.id %}" class="group">
+                    <img src="{{ item.image.url }}"
+                        alt="Music Cover"
+                        class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300 rounded-t-2xl" />
+                </a>
+                <div class="p-4 flex flex-col justify-between flex-grow">
+                    <div class="mb-4">
+                        <h2 class="text-lg font-semibold text-white line-clamp-2">{{ item.title }}</h2>
+                        <p class="text-sm text-gray-300 truncate">{{ item.description }}</p>
+                        <p class="text-xs text-gray-400 mt-1">By {{ item.author }}</p>
+                    </div>
+        
+                    {% if item.file %}
+                    <div class="mb-3">
+                        <audio controls class="w-full rounded-md">
+                            <source src="{{ item.file.url }}" type="audio/mp3">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                    {% endif %}
+        
+                    <div class="mt-auto flex justify-between items-center">
+                        <span class="text-xs bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-200 px-3 py-1 rounded-full">
+                            {{ item.category }}
+                        </span>
+                        <a href="{% url 'item:music_detail' item.id %}" class="text-green-500  text-md font-medium hover:underline">
+                            Details →
+                        </a>
+                    </div>
                 </div>
-
+            </div>
             {% endfor %}
-
         </div>
+        
+
+
+        
 
 
 

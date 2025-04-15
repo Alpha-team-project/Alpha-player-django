@@ -5,7 +5,7 @@
 {% block content %}
 
     <div class="pb-6 sm:grid grid-cols-4 gap-4">
-        <div class="col-span1">
+        <div class="col-span-1">
             <form class="flex items-center flex-col" action="{% url 'item:items' %}" method="get">
 
                 <input type="text" name="query" class="w-full py-4 px-6 border  rounded-3xl" value="{{query}}" required placeholder="Search what you want...">
@@ -35,79 +35,42 @@
 
            <div class="sm:col-span-3">
             {% if items %}
-                <div class="row">
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                     {% for item in items %}
-                        <div class="column m-2">
-                            <div class="card">
-                                {% if item.image %}
-                                    <img src="{{ item.image.url }}" class="music-image rounded-t-xl dark:brightness-50 hover:drop-shadow-xl" alt="{{ item.title }}">
-                                {% endif %}
-                                <div class="p-6 bg-gray-100 dark:text-white dark:bg-gray-800 rounded-b-xl shadow-xl hover:shadow-2xl">
-                                    <h2 class="sm:text-2xl text-lg break-words">{{ item.title }}</h2>
-                                    <p class="light:text-gray-700">{{ item.description }}</p>
-                                    <p class="light:text-gray-700">By: {{ item.author.full_name }}</p>
-                                    {% if item.file %}
-                                        <audio controls class="w-full mt-2">
-                                            <source src="{{ item.file.url }}" type="audio/mp3">
-                                            Your browser does not support the audio element.
-                                        </audio>
-                                    {% endif %}
-                                    <a href="{% url 'item:detail' item.id %}" class="btn btn-sm btn-info mt-2">Details</a>
-                                </div>
+                    <div class="bg-gray-900 rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col">
+                        <a href="{% url 'item:music_detail' item.id %}" class="group">
+                            <img src="{{ item.image.url }}"
+                                alt="Music Cover"
+                                class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300 rounded-t-2xl" />
+                        </a>
+                        <div class="p-4 flex flex-col justify-between flex-grow">
+                            <div class="mb-4">
+                                <h2 class="text-lg font-semibold text-white line-clamp-2">{{ item.title }}</h2>
+                                <p class="text-sm text-gray-300 truncate">{{ item.description }}</p>
+                                <p class="text-xs text-gray-400 mt-1">By {{ item.author }}</p>
+                            </div>
+                
+                            {% if item.file %}
+                            <div class="mb-3">
+                                <audio controls class="w-full rounded-md">
+                                    <source src="{{ item.file.url }}" type="audio/mp3">
+                                    Your browser does not support the audio element.
+                                </audio>
+                            </div>
+                            {% endif %}
+                
+                            <div class="mt-auto flex justify-between items-center">
+                                <span class="text-xs bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-200 px-3 py-1 rounded-full">
+                                    {{ item.category }}
+                                </span>
+                                <a href="{% url 'item:music_detail' item.id %}" class="text-green-500  text-md font-medium hover:underline">
+                                    Details →
+                                </a>
                             </div>
                         </div>
+                    </div>
                     {% endfor %}
                 </div>
-
-                <style>
-                    .row {
-                    display: flex;
-                    flex-wrap: wrap;
-                    padding: 0 4px;
-
-                    }
-
-                    /* Create four equal columns that sits next to each other */
-                    .column {
-                    flex: 25%;
-                    max-width: 25%;
-                    padding: 0 4px;
-                    height: fit-content;
-                    }
-
-
-                    .column img {
-                    margin-top: 8px;
-                    vertical-align: middle;
-                    width: 100%;
-                    transition: .5s ease-in-out;
-
-                    }
-
-                    .music-image {
-                        width: 100%;
-                        height: 150px; /* Reduced height for smaller images */
-                        object-fit: cover; /* Crops image to fit */
-                        max-width: 100%; /* Prevents overflow */
-                        transition: 0.5s ease-in-out;
-                    }
-
-
-                    /* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
-                    @media screen and (max-width: 600px) {
-                    .row {
-                    display: flex;
-                    flex-wrap: wrap;
-                    padding: 0 4px;
-                    height: auto;
-                    }
-                    .column {
-                        flex: 0%;
-                        max-width: 50%;
-                    }
-
-                }
-                </style>
 
 
                 {% else %}

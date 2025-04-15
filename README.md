@@ -57,7 +57,9 @@ Enter a username, email, and password when prompted.
 ## 7. Install & Build Tailwind CSS
 
 Tailwind CSS is used for frontend styling.
-
+```
+python manage.py tailwind build
+```
 This compiles the CSS whenever you make changes.
 
 ## 8. Run the Development Server

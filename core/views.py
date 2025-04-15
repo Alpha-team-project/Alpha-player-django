@@ -9,7 +9,7 @@ from .forms import SignupForm
 
 # @login_required(login_url="/signup/")
 def index(request):
-    items = Music.objects.filter(deleted_at__isnull=True)[0:10]
+    items = Music.objects.filter()[0:20]
     categories = Category.objects.all()
     return render(request,'core/index.html',{
         'categories':categories,
