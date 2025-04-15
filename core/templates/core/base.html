@@ -29,10 +29,10 @@
                 <a href="{% url 'item:items' %}" class="text-gray-700 dark:text-gray-300 hover:text-teal-500 text-lg font-medium">Browse</a>
     
                 {% if request.user.is_authenticated %}
-                <div class="grid grid-cols-3 gap-6">
-                    <a href="{% url 'conversation:inbox' %}" class="bg-teal-500 hover:bg-teal-600 text-white font-semibold px-4 py-2 rounded-xl">Inbox</a>
-                    <a href="{% url 'dashboard:index' %}" class="bg-gray-500 hover:bg-gray-600 text-white font-semibold px-4 py-2 rounded-xl">Dashboard</a>
-                    <a href="{% url 'core:logout' %}" class="bg-red-500 hover:bg-red-600 text-white font-semibold px-4 py-2 rounded-xl">Logout</a>
+                <div class="grid grid-cols-3 gap-6 text-center">
+                    <a href="{% url 'conversation:inbox' %}" class="bg-teal-500 hover:bg-teal-600 text-white font-semibold px-2 py-2 rounded-xl">Inbox</a>
+                    <a href="{% url 'dashboard:index' %}" class="bg-gray-500 hover:bg-gray-600 text-white font-semibold px-2 py-2 rounded-xl">Dashboard</a>
+                    <a href="{% url 'core:logout' %}" class="bg-red-500 hover:bg-red-600 text-white font-semibold px-2 py-2 rounded-xl">Logout</a>
 
                 </div>
                     <!-- Authenticated links -->
@@ -45,15 +45,12 @@
         </div>
     </nav>
     
-    
-    
-    
     <div class="px-6 py-6">
         {% block content %}
         {% endblock %}
     </div>
 
-    <footer  class="py-6 px-6 flex justify-between bg-gray-800">
+    <footer  class="py-6 px-6 flex justify-between bg-gray-900">
         <div class="w-2/3 pr-10">
             <h3 class="mb-5 font-semibold text-gray-400">About</h3>
             <p class="text-lg text-gray-500 break-words">
