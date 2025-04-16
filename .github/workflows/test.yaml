@@ -8,7 +8,6 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
     strategy:
       max-parallel: 2
@@ -32,6 +31,6 @@ jobs:
         SECRET_KEY: YOUR_SECKRET_KEY
         ALLOWED_HOSTS: 127.0.0.1,localhost
         DEBUG: True
-        
+
       run: |
         python manage.py test
