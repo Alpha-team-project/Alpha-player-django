@@ -4,3 +4,4 @@ pillow
 dotenv
 
 django-tailwind
+django-browser-reload
