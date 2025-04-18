@@ -56,11 +56,11 @@ jobs:
         SECRET_KEY: ${{ secrets.SECRET_KEY }}
         ALLOWED_HOSTS: ${{ secrets.ALLOWED_HOSTS }}
         DEBUG: ${{ secrets.DEBUG }}
-        # DB_NAME: postgres 
-        # DB_USER: postgres
-        # DB_PASSWORD: postgres
-        # DB_HOST: localhost 
-        # DB_PORT: 5432
+        DB_NAME: postgres
+        DB_USER: postgres
+        DB_PASSWORD: postgres
+        DB_HOST: localhost
+        DB_PORT: 5432
 
       run: |
         python manage.py test
