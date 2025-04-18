@@ -14,17 +14,17 @@ jobs:
       matrix:
         python-version: [3.10.17, 3.11.12]
     
-    # services:
-    #   postgres:
-    #     image: postgres:14
-    #     env:
-    #       POSTGRES_DB: postgres
-    #       POSTGRES_USER: postgres
-    #       POSTGRES_PASSWORD: postgres 
-    #     ports:
-    #       - 5432:5432
-    #       # needed because the postgres container does not provide a healthcheck
-    #     options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+    services:
+      postgres:
+        image: postgres:14
+        env:
+          POSTGRES_DB: postgres
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres 
+        ports:
+          - 5432:5432
+          # needed because the postgres container does not provide a healthcheck
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
 
     steps:
     - uses: actions/checkout@v2
@@ -53,11 +53,11 @@ jobs:
         SECRET_KEY: ${{ secrets.SECRET_KEY }}
         ALLOWED_HOSTS: ${{ secrets.ALLOWED_HOSTS }}
         DEBUG: ${{ secrets.DEBUG }}
-        DB_NAME: ${{ secrets.DB_NAME }} 
-        DB_USER: ${{ secrets.DB_USER }} 
-        DB_PASSWORD: ${{ secrets.DB_PASSWORD }} 
-        DB_HOST: ${{ secrets.DB_HOST }} 
-        DB_PORT: ${{ secrets.DB_PORT }} 
+        DB_NAME: ${{ env.DB_NAME }} 
+        DB_USER: ${{ env.DB_USER }} 
+        DB_PASSWORD: ${{ env.DB_PASSWORD }} 
+        DB_HOST: localhost 
+        DB_PORT: ${{ env.DB_PORT }} 
 
       run: |
         python manage.py test
