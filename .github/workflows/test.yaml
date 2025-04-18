@@ -30,7 +30,7 @@ jobs:
       env:
         SECRET_KEY: ${{ secrets.SECRET_KEY }}
         ALLOWED_HOSTS: ${{ secrets.ALLOWED_HOSTS }}
-        DEBUG: True
+        DEBUG: ${{ secrets.DEBUG }}
 
       run: |
         python manage.py test
