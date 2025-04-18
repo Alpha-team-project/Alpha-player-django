@@ -38,10 +38,13 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
-    # - uses: harmon758/postgresql-action@v1
-    #   with:
-    #     postgresql version: '14'
-
+    - name: Wait for PostgreSQL to be ready
+      run: |
+        until pg_isready -h localhost -p 5432 -U postgres; do
+          echo "Waiting for postgres..."
+          sleep 2
+        done
+        
     - name: Show if secrets exist (debug only)
       run: |
         echo "DB_NAME: $DB_NAME"
