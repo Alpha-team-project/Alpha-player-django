@@ -18,8 +18,8 @@ jobs:
       postgres:
         image: postgres:14
         env:
-          POSTGRES_DB: postgres
-          POSTGRES_USER: postgres
+          # POSTGRES_DB: postgres
+          # POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres 
         ports:
           - 5432:5432
@@ -44,7 +44,7 @@ jobs:
           echo "Waiting for postgres..."
           sleep 2
         done
-        
+
     - name: Show if secrets exist (debug only)
       run: |
         echo "DB_NAME: $DB_NAME"
@@ -60,7 +60,7 @@ jobs:
         DB_USER: ${{ env.DB_USER }} 
         DB_PASSWORD: ${{ env.DB_PASSWORD }} 
         DB_HOST: localhost 
-        DB_PORT: ${{ env.DB_PORT }} 
+        DB_PORT: 5432
 
       run: |
         python manage.py test
