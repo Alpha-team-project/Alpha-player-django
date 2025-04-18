@@ -18,8 +18,8 @@ jobs:
       postgres:
         image: postgres:14
         env:
-          # POSTGRES_DB: postgres
-          # POSTGRES_USER: postgres
+          POSTGRES_DB: postgres
+          POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres 
         ports:
           - 5432:5432
@@ -56,11 +56,11 @@ jobs:
         SECRET_KEY: ${{ secrets.SECRET_KEY }}
         ALLOWED_HOSTS: ${{ secrets.ALLOWED_HOSTS }}
         DEBUG: ${{ secrets.DEBUG }}
-        DB_NAME: ${{ env.DB_NAME }} 
-        DB_USER: ${{ env.DB_USER }} 
-        DB_PASSWORD: ${{ env.DB_PASSWORD }} 
-        DB_HOST: localhost 
-        DB_PORT: 5432
+        # DB_NAME: postgres 
+        # DB_USER: postgres
+        # DB_PASSWORD: postgres
+        # DB_HOST: localhost 
+        # DB_PORT: 5432
 
       run: |
         python manage.py test
