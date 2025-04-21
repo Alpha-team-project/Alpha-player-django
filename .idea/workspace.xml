@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4682a866-1aba-4e59-9be1-3883554361bf" name="Changes" comment="Comments added" />
+    <list default="true" id="4682a866-1aba-4e59-9be1-3883554361bf" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/item/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/item/models.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -54,7 +58,8 @@
     "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
+    "django.template.preview.state": "SHOW_EDITOR",
+    "git-widget-placeholder": "Otabek",
     "last_opened_file_path": "/home/otabek/Desktop/My computer/University/Collaborative/Alpha-player-django",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -132,6 +137,7 @@
       <workItem from="1744183723000" duration="395000" />
       <workItem from="1744349941663" duration="1306000" />
       <workItem from="1745209848625" duration="358000" />
+      <workItem from="1745214586216" duration="1616000" />
     </task>
     <task id="LOCAL-00001" summary="Created Tables, Added basic musci playing functions">
       <option name="closed" value="true" />
