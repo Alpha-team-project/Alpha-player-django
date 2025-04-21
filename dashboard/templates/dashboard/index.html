@@ -96,7 +96,7 @@
             {% for item in items %}
 
                 <div class="shadow-xl h-fit  rounded-b-xl ">
-                    <a href="{% url 'item:detail' item.id %}">
+                    <a href="{% url 'item:music_detail' item.id %}">
                         <div class="md:shrink-0">
                             <img src="{{ item.image.url }}" class="w-full {% if item.is_sold == True %} grayscale {% endif %}" alt="">
                         </div>

@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 from .forms import CategoryForm
 
 
-@login_required
+# @login_required
 def index(request):
     items = Music.objects.filter(created_by = request.user)
     all_users = User.objects.all()

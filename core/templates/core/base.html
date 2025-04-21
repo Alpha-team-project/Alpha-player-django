@@ -10,41 +10,47 @@
 
     <title>{% block title %}{% endblock title %} | Alpha player</title>
 </head>
-<body class="dark:bg-gray-900">
-    <nav class="dark:text-white py-6 sm:px-6 w-full sm:flex flex-wrap justify-between items-center border-b border-gray-200">
-            <a href="/" class="md:text-xl font-semibold ">Alpha player<span class="font-light"> | {{ request.user.username }}</span></a>
-
-
+<body class="bg-gray-800">
+    <nav class="bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 px-6 py-4">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row md:items-center md:justify-between space-y-4 md:space-y-0">
             
-        <div class="md:flex  md:space-x-6">
-            <div class="flex items-center justify-end sm:space-x-6">
-                <a href="{% url 'item:new' %}" class=" m-3 sm:text-lg font-semibold hover:text-gray-500">New item</a>
-                <a href="{% url 'item:items' %}" class=" m-3 sm:text-lg font-semibold hover:text-gray-500">Browse</a>
-            </div>
+            <!-- Left Side: Logo -->
+            <a href="/" class="text-2xl font-bold text-gray-900 dark:text-white">
+                Alpha player
+                {% if request.user.is_authenticated %}
+                    <span class="text-sm font-light">| {{ request.user.username }}</span>
+                {% endif %}
+            </a>
     
-            {% if request.user.is_authenticated %}
-                <div class="flex items-center justify-center sm:space-x-6 space-x-3">
-                    <a href="{% url 'conversation:inbox' %}" class="px-6   sm:py-3 sm:text-lg font-semibold bg-teal-500 text-white rounded-xl hover:bg-teal-700">Inbox</a>
-                    <a href="{% url 'dashboard:index' %}" class="px-6  sm:py-3 sm:text-lg font-semibold bg-gray-500 text-white rounded-xl hover:bg-gray-700">Dashboard</a>
-                    <a href="{% url 'core:logout' %}" class="px-3  sm:py-3 sm:text-lg font-semibold bg-red-500 text-white rounded-xl hover:bg-red-700">Logout</a>
+            <!-- Right Side: Nav Links -->
+            <div class="flex flex-col sm:flex-row sm:items-center sm:space-x-6 space-y-2 sm:space-y-0">
+                <!-- General links -->
+                <a href="{% url 'item:new' %}" class="text-gray-700 dark:text-gray-300 hover:text-teal-500 text-lg font-medium">New item</a>
+                <a href="{% url 'item:items' %}" class="text-gray-700 dark:text-gray-300 hover:text-teal-500 text-lg font-medium">Browse</a>
+    
+                {% if request.user.is_authenticated %}
+                <div class="grid grid-cols-3 gap-6 text-center">
+                    <a href="{% url 'conversation:inbox' %}" class="bg-teal-500 hover:bg-teal-600 text-white font-semibold px-2 py-2 rounded-xl">Inbox</a>
+                    <a href="{% url 'dashboard:index' %}" class="bg-gray-500 hover:bg-gray-600 text-white font-semibold px-2 py-2 rounded-xl">Dashboard</a>
+                    <a href="{% url 'core:logout' %}" class="bg-red-500 hover:bg-red-600 text-white font-semibold px-2 py-2 rounded-xl">Logout</a>
+
                 </div>
-            {% else %}
-                <div class="flex items-center justify-center space-x-6">
-                    <a href="{% url 'core:signup' %}" class="px-6 py-3 text-lg font-semibold bg-teal-500 text-white rounded-xl hover:bg-teal-700">Sign up</a>
-                    <a href="{% url 'core:login' %}" class="px-6 py-3 text-lg font-semibold bg-gray-500 text-white rounded-xl hover:bg-gray-700">Login</a>
-                </div>
-            {% endif %}
+                    <!-- Authenticated links -->
+                {% else %}
+                    <!-- Guest links -->
+                    <a href="{% url 'core:signup' %}" class="bg-teal-500 hover:bg-teal-600 text-white font-semibold px-4 py-2 rounded-xl">Sign up</a>
+                    <a href="{% url 'core:login' %}" class="bg-gray-500 hover:bg-gray-600 text-white font-semibold px-4 py-2 rounded-xl">Login</a>
+                {% endif %}
+            </div>
         </div>
     </nav>
-    
-    
     
     <div class="px-6 py-6">
         {% block content %}
         {% endblock %}
     </div>
 
-    <footer  class="py-6 px-6 flex justify-between bg-gray-800">
+    <footer  class="py-6 px-6 flex justify-between bg-gray-900">
         <div class="w-2/3 pr-10">
             <h3 class="mb-5 font-semibold text-gray-400">About</h3>
             <p class="text-lg text-gray-500 break-words">
