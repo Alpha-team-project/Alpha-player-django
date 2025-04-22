@@ -18,7 +18,7 @@ RUN pip install -r ./production.txt
 # Copy project
 COPY . .
 
-RUN ["chmod", "+x", "./code/entrypoint.sh"]
-ENTRYPOINT ["./code/entrypoint.sh"]
+RUN ["chmod", "+x", "/code/entrypoint.sh"]
+ENTRYPOINT ["/code/entrypoint.sh"]
 
 RUN rm -rf /etc/apk/cache
