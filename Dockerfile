@@ -15,8 +15,10 @@ WORKDIR /code
 COPY ./requirements/production.txt .
 RUN pip install -r ./production.txt
 
+# Copy project
+COPY . .
+
 RUN ["chmod", "+x", "./code/entrypoint.sh"]
 ENTRYPOINT ["./code/entrypoint.sh"]
 
-# Copy project
-COPY . .
+RUN rm -rf /etc/apk/cache
