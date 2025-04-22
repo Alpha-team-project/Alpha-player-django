@@ -74,6 +74,7 @@ Open http://127.0.0.1:8000/ in your browser.
 Now, Alpha Player should be running on your local machine! 🚀
 
 
+docker-compose up -d --build
 
 
 # Login page [click to see](https://alpha-player.bahrom04.uz/login/)

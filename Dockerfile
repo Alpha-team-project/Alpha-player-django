@@ -12,8 +12,8 @@ RUN apk update && apk add --no-cache nodejs npm postgresql-dev
 WORKDIR /code
 
 # Install dependencies
-COPY ./production.txt .
-RUN pip install -r production.txt
+COPY ./requirements/production.txt .
+RUN pip install -r ./production.txt
 
 RUN ["chmod", "+x", "./code/entrypoint.sh"]
 ENTRYPOINT ["./code/entrypoint.sh"]
