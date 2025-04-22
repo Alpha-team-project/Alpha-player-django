@@ -15,5 +15,8 @@ WORKDIR /code
 COPY ./production.txt .
 RUN pip install -r production.txt
 
+RUN ["chmod", "+x", "./code/entrypoint.sh"]
+ENTRYPOINT ["./code/entrypoint.sh"]
+
 # Copy project
 COPY . .

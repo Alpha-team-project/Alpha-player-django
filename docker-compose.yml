@@ -31,4 +31,4 @@ services:
     restart: always
 
 volumes:
-  postgres_data
+ postgres_data: {}
