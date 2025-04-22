@@ -1,0 +1,6 @@
+django==4.2.20
+django-tailwind
+django-browser-reload
+pillow
+dotenv
+psycopg2-binary
