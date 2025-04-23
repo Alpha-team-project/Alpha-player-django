@@ -1,0 +1,37 @@
+name: Continuous Deployment
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: checkout repository
+        uses: actions/checkout@v4
+    
+      - name: ssh to server and deploy changes
+        uses: appleboy/ssh-action@master
+
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USERNAME }}
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          port: ${{ secrets.SERVER_PORT }}
+
+          script: |
+            cd ${{ secrets.SERVER_PATH }}
+
+            if [ ! -d "Alpha-player-django" ]; then
+              git clone https://github.com/Alpha-team-project/Alpha-player-django.git && cd Alpha-player-django
+            else
+              cd Alpha-player-django && git pull origin main
+            fi
+            
+            sudo systemctl restart alpha-player.service
