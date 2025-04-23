@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4682a866-1aba-4e59-9be1-3883554361bf" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="4682a866-1aba-4e59-9be1-3883554361bf" name="Changes" comment="Playlist models have been added">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/item/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/item/models.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -137,7 +135,7 @@
       <workItem from="1744183723000" duration="395000" />
       <workItem from="1744349941663" duration="1306000" />
       <workItem from="1745209848625" duration="358000" />
-      <workItem from="1745214586216" duration="1616000" />
+      <workItem from="1745214586216" duration="2446000" />
     </task>
     <task id="LOCAL-00001" summary="Created Tables, Added basic musci playing functions">
       <option name="closed" value="true" />
@@ -163,7 +161,15 @@
       <option name="project" value="LOCAL" />
       <updated>1745209921359</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Playlist models have been added">
+      <option name="closed" value="true" />
+      <created>1745228655441</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1745228655441</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -183,6 +189,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Created Tables, Added basic musci playing functions" />
     <MESSAGE value="Comments added" />
-    <option name="LAST_COMMIT_MESSAGE" value="Comments added" />
+    <MESSAGE value="Playlist models have been added" />
+    <option name="LAST_COMMIT_MESSAGE" value="Playlist models have been added" />
   </component>
 </project>
