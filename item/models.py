@@ -53,12 +53,12 @@ class Playlist(BaseModel):
 
 class PlaylistMusic(models.Model):
     playlist = models.ForeignKey(Playlist, on_delete=models.CASCADE, related_name='playlist_musics')
-    music = models.ForeignKey('Music', on_delete=models.CASCADE)
+    music = models.ManyToManyField(Music)
     order = models.PositiveIntegerField(default=0)
 
     class Meta:
-        unique_together = ('playlist', 'music')
+        # unique_together = ('playlist', 'music')
         ordering = ['order']
 
     def __str__(self):
-        return f"{self.music.title} in {self.playlist.name}"
+        return f"{self.playlist.name}"
