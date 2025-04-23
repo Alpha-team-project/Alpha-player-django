@@ -33,5 +33,5 @@ jobs:
             else
               cd Alpha-player-django && git pull origin main
             fi
-            
+            sudo 
             sudo systemctl restart alpha-player.service
