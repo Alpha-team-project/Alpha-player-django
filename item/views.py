@@ -24,7 +24,7 @@ def category_new(request):
         form = CategoryForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('music:category_list')
+            return redirect('item:category_list')
     else:
         form = CategoryForm()
     return render(request, 'item/form.html', {
@@ -40,7 +40,7 @@ def category_edit(request, pk):
         form = CategoryForm(request.POST, instance=category)
         if form.is_valid():
             form.save()
-            return redirect('music:category_list')
+            return redirect('item:category_list')
     else:
         form = CategoryForm(instance=category)
     return render(request, 'item/form.html', {
@@ -53,7 +53,7 @@ def category_edit(request, pk):
 def category_delete(request, pk):
     category = get_object_or_404(Category, pk=pk)
     category.delete()
-    return redirect('music:category_list')
+    return redirect('item:category_list')
 
 
 # Author Views
@@ -75,7 +75,7 @@ def author_new(request):
             author = form.save(commit=False)
             author.user = request.user  # Tie author to current user
             author.save()
-            return redirect('music:author_detail', pk=author.pk)
+            return redirect('item:author_detail', pk=author.pk)
     else:
         form = AuthorForm()
     return render(request, 'item/form.html', {
@@ -91,7 +91,7 @@ def author_edit(request, pk):
         form = AuthorForm(request.POST, request.FILES, instance=author)
         if form.is_valid():
             form.save()
-            return redirect('music:author_detail', pk=author.pk)
+            return redirect('item:author_detail', pk=author.pk)
     else:
         form = AuthorForm(instance=author)
     return render(request, 'item/form.html', {
@@ -138,7 +138,7 @@ def music_new(request):
             music = form.save(commit=False)
             music.created_by = request.user
             music.save()
-            return redirect('music:music_detail', pk=music.pk)
+            return redirect('item:music_detail', pk=music.pk)
     else:
         form = MusicForm(user=request.user)
     return render(request, 'item/form.html', {
@@ -154,7 +154,7 @@ def music_edit(request, pk):
         form = MusicForm(request.POST, request.FILES, instance=item, user=request.user)
         if form.is_valid():
             form.save()
-            return redirect('music:music_detail', pk=item.pk)
+            return redirect('item:music_detail', pk=item.pk)
     else:
         form = MusicForm(instance=item, user=request.user)
     return render(request, 'item/form.html', {
@@ -168,4 +168,4 @@ def music_delete(request, pk):
     item = get_object_or_404(Music, pk=pk, created_by=request.user)
     item.deleted_at = timezone.now()
     item.save()
-    return redirect('music:music_list')
+    return redirect('item:music_list')

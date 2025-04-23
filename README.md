@@ -1,37 +1,97 @@
-# Tailwind
-https://django-tailwind.readthedocs.io/en/latest/installation.html
+# Setup & Installation
 
-# Market Place
-A Django website made to place and manage items on the platform to simplify shopping.
+Python 3.10+ – Download Python
+
+Node.js & npm (for Tailwind CSS) – Download Node.js
+
+PostgreSQL (or SQLite for development) – Download PostgreSQL
+
+Git – Download Git
+
+## 1. Clone the Repository
+
+First, open a terminal and run:
+
+```shell
+git clone https://github.com/Alpha-team-project/Alpha-player-django.git
+```
+## 2. Set Up a Virtual Environment
+
+Creating a virtual environment helps manage dependencies.
+
+```shell
+python -m venv venv
+```
+## 3. Install Backend Dependencies
+
+Next, install the required Python packages:
+```shell
+pip install -r requirements.txt
+```
+
+## 4. Set Up Environment Variables
+
+Create a .env file in the root directory and add:
+```shell
+cp .env.example .env
+```
+For SQLite (development), you don’t need database settings.
+
+## 5. Apply Database Migrations
+
+Run the following command to create database tables:
+
+```shell
+python manage.py migrate
+```
+
+## 6. Create a Superuser (Admin Panel Access)
+
+To access the Django Admin panel, create a superuser:
+
+```shell
+python manage.py createsuperuser
+```
+Enter a username, email, and password when prompted.
+
+## 7. Install & Build Tailwind CSS
+
+Tailwind CSS is used for frontend styling.
+```shell
+python manage.py tailwind build
+```
+This compiles the CSS whenever you make changes.
+
+## 8. Run the Development Server
+
+Now, start the Django server:
+
+```shell
+python manage.py runserver
+```
+Open http://127.0.0.1:8000/ in your browser.
+
+Now, Alpha Player should be running on your local machine! 🚀
 
 
-## Features:
-
-- Authentication
-- Items gallery
-- Search and Filters
-- Chat functionality between customer and seller
-- Admin dashboard
-- Interactive dashboard
-- Related items suggestion
-- Responsive and modern design interface like automatic dark/light modes
 
 
-## Tools needed:
-1. Python - Django
-2. HTML, CSS & Tailwindcss
-3. SQLite database 
+# Login page [click to see](https://alpha-player.bahrom04.uz/login/)
 
-![image](https://github.com/vilasrhegde/marketplace/assets/85540091/7584059b-9072-468a-a354-c56da607623c)
-![image](https://github.com/vilasrhegde/marketplace/assets/85540091/21cdc900-bed8-43d6-b11e-35504425cbd3)
-![image](https://github.com/vilasrhegde/marketplace/assets/85540091/05044458-8da2-4784-8d01-9f4b56967055)
-![image](https://github.com/vilasrhegde/marketplace/assets/85540091/ad968545-6b2b-4bd9-9946-9271d681dc64)
-![image](https://github.com/vilasrhegde/marketplace/assets/85540091/263ab3b7-50b3-4f13-b287-8f868eb7d1e1)
-![image](https://github.com/vilasrhegde/marketplace/assets/85540091/d06aec24-534d-4edf-a120-2fb4f2d43afb)
-![image](https://github.com/vilasrhegde/marketplace/assets/85540091/68b476c6-fa01-4a4a-b9b8-7295d069bb94)
-![image](https://github.com/vilasrhegde/marketplace/assets/85540091/310a9986-73d2-48ef-817d-c4e23d2c17d2)
-![image](https://github.com/vilasrhegde/marketplace/assets/85540091/5008c0fb-274d-4842-a60e-15bec66d0d62)
-![image](https://github.com/vilasrhegde/marketplace/assets/85540091/117c57e3-c0e7-4e77-8964-174e8f1e3312)
-![image](https://github.com/vilasrhegde/marketplace/assets/85540091/87e7c958-b980-4f0e-9e4e-2b574d6df070)
-![image](https://github.com/vilasrhegde/marketplace/assets/85540091/7faee665-5593-4df3-bd91-5d941f3f3607)
-![image](https://github.com/vilasrhegde/marketplace/assets/85540091/105e98ce-3cfe-4bca-b4e8-740b1211e4de)
+![Login](static/images/login.png)
+
+# Sign up page [click to see](https://alpha-player.bahrom04.uz/signup/?next=/)
+
+![plot](static/images/sign_up.png)
+
+# Dashboard page [click to see](https://alpha-player.bahrom04.uz/login/)
+
+![plot](static/images/dashboard.png)
+
+# Browse musics  [click to see](https://alpha-player.bahrom04.uz/items/)
+
+![plot](static/images/browse_page.png)
+
+# Music detail page [click to see](https://alpha-player.bahrom04.uz/items/2/)
+
+![plot](static/images/music_detail.png)
