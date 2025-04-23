@@ -1,21 +1,5 @@
 # docker-compose.yml
 services:
-  web:
-    container_name: alpha-player
-    restart: always
-    build: .
-    ports:
-      - "8002:8002"
-    command: python manage.py runserver 0.0.0.0:8002
-    volumes:
-    - .:/code
-    env_file:
-      - .env
-    environment:
-      - TZ=Asia/Tashkent
-    depends_on:
-      - db
-
   db:
     container_name: alpha_player
     image: postgres:14
@@ -29,6 +13,26 @@ services:
       - POSTGRES_PORT=${DB_PORT}  
       - "POSTGRES_HOST_AUTH_METHOD=trust"
     restart: always
+
+  web:
+    container_name: alpha-player
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8002:8002"
+    command: python manage.py runserver 0.0.0.0:8002
+    volumes:
+    - .:/code
+    env_file:
+      - .env
+    environment:
+      - TZ=Asia/Tashkent
+    depends_on:
+      - db
+
+  
 
 volumes:
  postgres_data: {}
