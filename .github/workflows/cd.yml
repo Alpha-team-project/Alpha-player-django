@@ -34,6 +34,6 @@ jobs:
               cd Alpha-player-django && git pull origin main
             fi
             source ./venv/bin/activate
-            pip3 install requirements/production.txt
+            pip3 install -r requirements/production.txt
             sudo ./entrypoint.sh  
             sudo systemctl restart alpha-player.service
