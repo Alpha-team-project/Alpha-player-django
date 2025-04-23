@@ -39,3 +39,26 @@ class Music(BaseModel):
 
     class Meta:
         ordering = ('-created_at',)
+
+
+class Playlist(BaseModel):
+    name = models.CharField(max_length=255)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='playlists')
+    description = models.TextField(blank=True, null=True)
+    image = models.ImageField(upload_to='playlist_images', blank=True, null=True)
+
+    def __str__(self):
+        return f"{self.name} by {self.user.username}"
+
+
+class PlaylistMusic(models.Model):
+    playlist = models.ForeignKey(Playlist, on_delete=models.CASCADE, related_name='playlist_musics')
+    music = models.ForeignKey('Music', on_delete=models.CASCADE)
+    order = models.PositiveIntegerField(default=0)
+
+    class Meta:
+        unique_together = ('playlist', 'music')
+        ordering = ['order']
+
+    def __str__(self):
+        return f"{self.music.title} in {self.playlist.name}"
