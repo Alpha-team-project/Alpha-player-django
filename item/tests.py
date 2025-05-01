@@ -138,7 +138,7 @@ class MusicModelTest(TestCase):
     def test_music_detail_view_status_404(self):
         url_404_1 = f"/items/{self.music.id}/test/url"
         url_404_2 = f"/items/2/"
-        
+
         response_1 = self.client.get(url_404_1)
         response_2 = self.client.get(url_404_2)
 

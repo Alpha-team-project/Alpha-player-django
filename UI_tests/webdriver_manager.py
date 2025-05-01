@@ -2,7 +2,7 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 
 
-class WebdriverManager():
+class WebdriverManager:
     web_driver = None
 
     def __init__(self):
@@ -14,14 +14,13 @@ class WebdriverManager():
 
         self.web_driver = webdriver.Chrome(options=chrome_options)
 
-    def get_webdriver(self, url: str):            
+    def get_webdriver(self, url: str):
         self.web_driver.get(url)
         return self.web_driver
-    
+
     def maximize_window(self):
         self.web_driver.maximize_window()
-    
+
     def close_webdriver(self):
         if self.web_driver:
             self.web_driver.quit()
-
