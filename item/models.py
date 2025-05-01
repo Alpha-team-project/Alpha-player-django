@@ -50,25 +50,16 @@ class Music(BaseModel):
 
 
 class Playlist(BaseModel):
-    name = models.CharField(max_length=255)
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="playlists")
-    description = models.TextField(blank=True, null=True)
+    music = models.ManyToManyField(Music, blank=True, null=True)
+
+    title = models.CharField(max_length=255)
+    description = models.TextField(blank=True)
     image = models.ImageField(upload_to="playlist_images", blank=True, null=True)
-
-    def __str__(self):
-        return f"{self.name} by {self.user.username}"
-
-
-class PlaylistMusic(models.Model):
-    playlist = models.ForeignKey(
-        Playlist, on_delete=models.CASCADE, related_name="playlist_musics"
-    )
-    music = models.ManyToManyField(Music)
     order = models.PositiveIntegerField(default=0)
 
     class Meta:
-        # unique_together = ('playlist', 'music')
-        ordering = ["order"]
+        ordering = ("-created_at",)
 
     def __str__(self):
-        return f"{self.playlist.name}"
+        return f"{self.user}-{self.title}"

@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.utils import timezone
-from .models import Music, Category, Author
+from .models import Category, Author, Music, Playlist
 from .forms import MusicForm, CategoryForm, AuthorForm
 from django.db.models import Q
 
@@ -215,3 +215,43 @@ def music_delete(request, pk):
     item.deleted_at = timezone.now()
     item.save()
     return redirect("item:music_list")
+
+
+@login_required
+def playlist(request):
+    playlists = Playlist.objects.filter(user=request.user)[0:20]
+    return render(
+        request,
+        "item/playlist.html",
+        {
+            "playlists": playlists,
+        },
+    )
+
+
+@login_required
+def playlist_detail(request, pk):
+    playlist_details = get_object_or_404(Playlist, user=request.user, pk=pk)
+    print("-------------------------------------")
+    print("-------------------------------------", playlist_details.music.all())
+    print("-------------------------------------")
+    return render(
+        request,
+        "item/playlist_detail.html",
+        {
+            "playlist_detail": playlist_details.music.all(),
+        },
+    )
+
+
+@login_required
+def add_to_playlist(request):
+    if request.method == "POST":
+        music_id = request.POST.get("music_id")
+        playlist = request.POST.get("playlist_id")
+        music = get_object_or_404(Music, id=music_id)
+        playlist = get_object_or_404(Playlist, id=playlist, user=request.user)
+
+        playlist.music.add(music)
+
+        return redirect("item:music_detail", pk=1)
