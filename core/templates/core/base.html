@@ -30,7 +30,6 @@
     
                 {% if request.user.is_authenticated %}
                 <div class="grid grid-cols-3 gap-6 text-center">
-                    <a href="{% url 'conversation:inbox' %}" class="bg-teal-500 hover:bg-teal-600 text-white font-semibold px-2 py-2 rounded-xl">Inbox</a>
                     <a href="{% url 'dashboard:index' %}" class="bg-gray-500 hover:bg-gray-600 text-white font-semibold px-2 py-2 rounded-xl">Dashboard</a>
                     <a href="{% url 'core:logout' %}" class="bg-red-500 hover:bg-red-600 text-white font-semibold px-2 py-2 rounded-xl">Logout</a>
 
