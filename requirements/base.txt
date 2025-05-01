@@ -4,5 +4,7 @@ django-browser-reload
 pillow
 dotenv
 psycopg2
+selenium
+pytest
 
 pre-commit
