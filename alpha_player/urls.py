@@ -5,11 +5,9 @@ from django.urls import path, include
 
 
 urlpatterns = [
-    path('',include('core.urls')),
-    path('items/', include('item.urls')),
-    path('admin/', admin.site.urls),
-    path('dashboard/', include('dashboard.urls')),
-    path('inbox/',include('conversation.urls')),
+    path("", include("core.urls")),
+    path("items/", include("item.urls")),
+    path("admin/", admin.site.urls),
+    path("dashboard/", include("dashboard.urls")),
     path("__reload__/", include("django_browser_reload.urls")),
-
-] +  static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

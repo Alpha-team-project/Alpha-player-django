@@ -6,21 +6,21 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('item', '0002_playlist_playlistmusic'),
+        ("item", "0002_playlist_playlistmusic"),
     ]
 
     operations = [
         migrations.AlterUniqueTogether(
-            name='playlistmusic',
+            name="playlistmusic",
             unique_together=set(),
         ),
         migrations.RemoveField(
-            model_name='playlistmusic',
-            name='music',
+            model_name="playlistmusic",
+            name="music",
         ),
         migrations.AddField(
-            model_name='playlistmusic',
-            name='music',
-            field=models.ManyToManyField(to='item.music'),
+            model_name="playlistmusic",
+            name="music",
+            field=models.ManyToManyField(to="item.music"),
         ),
     ]

@@ -1,0 +1,4 @@
+user create playlist function
+
+user add music into one of the playlist
+    user can add one music from music detail page selecting playlist list like youtube

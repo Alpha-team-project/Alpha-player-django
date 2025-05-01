@@ -7,8 +7,10 @@ from selenium.webdriver.support import expected_conditions as EC
 
 
 from time import sleep
+
 # test for unseccussful login 4-5
 # after login if it goes to Dashboard, element with My items text should be visible
+
 
 @pytest.fixture
 def driver():
@@ -20,10 +22,13 @@ def driver():
 
 
 @pytest.mark.parametrize(
-    "username, password", [
-    ("myuser", "somepass123"),
-    ("anotheruser1", "somepassway123"),
-    ("cooluser", "strongpass"),])
+    "username, password",
+    [
+        ("myuser", "somepass123"),
+        ("anotheruser1", "somepassway123"),
+        ("cooluser", "strongpass"),
+    ],
+)
 def test_login_successful(driver, username, password):
     home_page = HomePage(driver)
 
@@ -43,4 +48,3 @@ def test_login_successful(driver, username, password):
     WebDriverWait(driver, 4).until(EC.title_is("Welcome | Alpha player"))
 
     assert driver.title == "Welcome | Alpha player"
-

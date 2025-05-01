@@ -6,3 +6,5 @@ dotenv
 psycopg2
 selenium
 pytest
+
+pre-commit

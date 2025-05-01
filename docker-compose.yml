@@ -10,7 +10,7 @@ services:
       - POSTGRES_PASSWORD=${DB_PASSWORD}
       - POSTGRES_HOST=${DB_HOST}
       - POSTGRES_DB=${DB_NAME}
-      - POSTGRES_PORT=${DB_PORT}  
+      - POSTGRES_PORT=${DB_PORT}
       - "POSTGRES_HOST_AUTH_METHOD=trust"
     restart: always
 
@@ -32,7 +32,7 @@ services:
     depends_on:
       - db
 
-  
+
 
 volumes:
  postgres_data: {}
