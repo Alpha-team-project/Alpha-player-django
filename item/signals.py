@@ -11,21 +11,24 @@ def create_default_playlists(sender, instance, created, **kwargs):
             [
                 Playlist(
                     user=instance,
-                    name="Favorites",
+                    title="Favorites",
                     description="Your favorite songs",
-                    order=0,
+                    image="images/favourite.png",
+                    order=1,
                 ),
                 Playlist(
                     user=instance,
-                    name="See Later",
+                    title="See Later",
                     description="Songs to check out later",
-                    order=0,
+                    image="images/see-you-later.jpg",
+                    order=2,
                 ),
                 Playlist(
                     user=instance,
-                    name="Chill Vibes",
+                    title="Chill Vibes",
                     description="Relaxing and calm music",
-                    order=0,
+                    image="images/chill-vibes.jpg",
+                    order=3,
                 ),
             ]
         )

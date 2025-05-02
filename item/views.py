@@ -232,9 +232,6 @@ def playlist(request):
 @login_required
 def playlist_detail(request, pk):
     playlist_details = get_object_or_404(Playlist, user=request.user, pk=pk)
-    print("-------------------------------------")
-    print("-------------------------------------", playlist_details.music.all())
-    print("-------------------------------------")
     return render(
         request,
         "item/playlist_detail.html",
@@ -254,4 +251,4 @@ def add_to_playlist(request):
 
         playlist.music.add(music)
 
-        return redirect("item:music_detail", pk=1)
+        return redirect("item:playlist")

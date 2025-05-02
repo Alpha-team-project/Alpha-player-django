@@ -51,7 +51,7 @@ class Music(BaseModel):
 
 class Playlist(BaseModel):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="playlists")
-    music = models.ManyToManyField(Music, blank=True, null=True)
+    music = models.ManyToManyField(Music, blank=True)
 
     title = models.CharField(max_length=255)
     description = models.TextField(blank=True)
