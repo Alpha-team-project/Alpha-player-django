@@ -56,28 +56,38 @@ class MusicForm(forms.ModelForm):
         ]
         widgets = {
             "title": forms.TextInput(
-                attrs={"class": "form-control", "placeholder": "Enter music title"}
+                attrs={
+                    "class": "form-control py-2 px-6 dark:text-black rounded-xl",
+                    "placeholder": "Enter music title",
+                }
             ),
-            "author": forms.Select(attrs={"class": "form-control"}),
+            "author": forms.Select(
+                attrs={"class": "form-control py-2 px-6 dark:text-black rounded-xl"}
+            ),
             "description": forms.Textarea(
                 attrs={
-                    "class": "form-control",
+                    "class": "form-control py-2 px-6 dark:text-black rounded-xl",
                     "rows": 4,
                     "placeholder": "Enter description",
                 }
             ),
             "length": forms.NumberInput(
-                attrs={"class": "form-control", "placeholder": "Length in seconds"}
+                attrs={
+                    "class": "form-control py-2 px-6 dark:text-black rounded-xl",
+                    "placeholder": "Length in seconds",
+                }
             ),
-            "file": forms.FileInput(attrs={"class": "form-control-file"}),
+            "file": forms.FileInput(attrs={"class": "form-control-file "}),
             "lyrics": forms.Textarea(
                 attrs={
-                    "class": "form-control",
+                    "class": "form-control py-2 px-6 dark:text-black rounded-xl",
                     "rows": 6,
                     "placeholder": "Enter lyrics",
                 }
             ),
-            "category": forms.Select(attrs={"class": "form-control"}),
+            "category": forms.Select(
+                attrs={"class": "form-control py-2 px-6 dark:text-black rounded-xl"}
+            ),
             "image": forms.FileInput(attrs={"class": "form-control-file"}),
         }
         labels = {
