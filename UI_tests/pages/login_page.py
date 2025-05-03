@@ -21,4 +21,8 @@ class LoginPage():
 
     def get_submit_button(self):
         return self.driver.find_element(By.XPATH, "//button[text()='Submit']")
+    
+    def get_incorrect_credentials_alert(self):
+        return WebDriverWait(self.driver, 4).until(
+            EC.visibility_of_element_located((By.CSS_SELECTOR, "ul.errorlist.nonfield")))
 
