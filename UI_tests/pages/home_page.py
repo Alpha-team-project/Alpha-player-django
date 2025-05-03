@@ -25,4 +25,8 @@ class HomePage():
             EC.visibility_of_element_located((By.XPATH, "//a[text()='Login']")))
         
         return login_button
+    
+    def get_myplaylist_button(self):
+        return WebDriverWait(self.driver, 5).until(
+            EC.element_to_be_clickable((By.XPATH, "//a[text()='My playlist']")))
 

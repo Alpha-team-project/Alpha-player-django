@@ -5,7 +5,6 @@ from webdriver_manager import WebdriverManager
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-# after login if it goes to Dashboard, element with My items text should be visible
 
 @pytest.fixture
 def driver():
