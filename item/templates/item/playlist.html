@@ -1,0 +1,30 @@
+{% extends 'core/base.html' %}
+
+{% block title %}My playlist {% endblock title %}
+
+{% block content %}
+<div class="sm:px-6 px-3 w-full   bg-gray-800 text-white rounded-xl shadow-xl">
+    <h2 class="md:mb-12 mb-3 font-medium text-2xl text-center">My playlist</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        {% for playlist in playlists %}
+        <div class="bg-gray-900 rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col">
+            <a href="{% url 'item:playlist_detail' playlist.id %}" class="group">
+                <img src="{{ playlist.image.url }}" alt="Playlist Cover" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300 rounded-t-2xl">
+            </a>
+            <div class="p-4 flex flex-col justify-between flex-grow">
+                <div class="mb-4">
+                    <h2 class="text-lg font-semibold text-white line-clamp-2">{{ playlist.title }}</h2>
+                    <p class="text-sm text-gray-300 truncate">{{ playlist.description }}</p>
+                    <p class="text-xs text-gray-400 mt-1">By {{ playlist.user }}</p>
+                </div>
+                <div class="mt-auto flex justify-between items-center">
+                    <a href="{% url 'item:playlist_detail' playlist.id %}" class="text-green-500  text-md font-medium hover:underline">
+                        Details →
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

@@ -16,10 +16,13 @@ def driver():
 
 
 @pytest.mark.parametrize(
-    "username, password", [
-    ("myuser", "somepass123"),
-    ("anotheruser1", "somepassway123"),
-    ("cooluser", "strongpass"),])
+    "username, password",
+    [
+        ("myuser", "somepass123"),
+        ("anotheruser1", "somepassway123"),
+        ("cooluser", "strongpass"),
+    ],
+)
 def test_login_successful(driver, username, password):
     home_page = HomePage(driver)
 

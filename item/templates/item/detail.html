@@ -15,7 +15,7 @@
     <div class="col-span-2 p-6 bg-gray-100 dark:text-white dark:bg-gray-800 rounded-xl text-center md:text-left">
         <div class="sm:flex flex-col justify-between md:w-3/4">
             <div>
-                <h1 class="text-gray-500 dark:text-white md:text-3xl text-left">${{item.title}}</h1>
+                <h1 class="text-gray-500 dark:text-white md:text-3xl text-left">{{item.title}}</h1>
             </div>
             {% if item.length %}
             <div>
@@ -40,6 +40,38 @@
             {{item.description}}
         </p>
         {% endif %}
+        <form method="POST" action="{% url 'item:add_to_playlist' %}" class="mt-6">
+            {% csrf_token %}
+            <input type="hidden" name="music_id" value="{{ item.id }}">
+            <label for="playlist" class="block text-left mb-2 text-sm font-medium text-gray-700 dark:text-white">
+                Add to Playlist:
+            </label>
+            <div class="relative">
+                <select name="playlist_id" id="playlist" class="block w-full appearance-none bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white py-2 px-4 pr-10 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                    {% for playlist in request.user.playlists.all %}
+                    <option value="{{ playlist.id }}">{{ playlist.title }}</option>
+                    {% endfor %}
+                </select>
+                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700 dark:text-gray-300">
+                    <svg
+                        class="w-5 h-5"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                    >
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M19 9l-7 7-7-7"
+                        />
+                    </svg>
+                </div>
+            </div>
+            <button type="submit" class="mt-4 bg-blue-700 text-white px-4 py-2 rounded-lg hover:bg-blue-800 transition duration-300">
+                Add
+            </button>
+        </form>
         <div class="mt-4 flex gap-4">
             <div>
                 <!-- Share Link Button -->
@@ -67,9 +99,9 @@
 </div>
 <script>
     document.getElementById('copyButton').addEventListener('click', function() {
-      
+
         var input = document.createElement('input');
-        input.value = window.location.href; 
+        input.value = window.location.href;
         document.body.appendChild(input);
 
         input.select();

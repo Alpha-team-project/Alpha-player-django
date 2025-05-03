@@ -13,7 +13,7 @@
 <body class="bg-gray-800">
     <nav class="bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 px-6 py-4">
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row md:items-center md:justify-between space-y-4 md:space-y-0">
-            
+
             <!-- Left Side: Logo -->
             <a href="/" class="text-2xl font-bold text-gray-900 dark:text-white">
                 Alpha player
@@ -21,16 +21,16 @@
                     <span class="text-sm font-light">| {{ request.user.username }}</span>
                 {% endif %}
             </a>
-    
+
             <!-- Right Side: Nav Links -->
             <div class="flex flex-col sm:flex-row sm:items-center sm:space-x-6 space-y-2 sm:space-y-0">
                 <!-- General links -->
-                <a href="{% url 'item:new' %}" class="text-gray-700 dark:text-gray-300 hover:text-teal-500 text-lg font-medium">New item</a>
+                <a href="{% url 'item:new' %}" class="text-gray-700 dark:text-gray-300 hover:text-teal-500 text-lg font-medium">New music</a>
                 <a href="{% url 'item:items' %}" class="text-gray-700 dark:text-gray-300 hover:text-teal-500 text-lg font-medium">Browse</a>
-    
+
                 {% if request.user.is_authenticated %}
                 <div class="grid grid-cols-3 gap-6 text-center">
-                    <a href="{% url 'conversation:inbox' %}" class="bg-teal-500 hover:bg-teal-600 text-white font-semibold px-2 py-2 rounded-xl">Inbox</a>
+                    <a href="{% url 'item:playlist' %}" class="bg-gray-500 hover:bg-gray-600 text-white font-semibold px-2 py-2 rounded-xl">My playlist</a>
                     <a href="{% url 'dashboard:index' %}" class="bg-gray-500 hover:bg-gray-600 text-white font-semibold px-2 py-2 rounded-xl">Dashboard</a>
                     <a href="{% url 'core:logout' %}" class="bg-red-500 hover:bg-red-600 text-white font-semibold px-2 py-2 rounded-xl">Logout</a>
 
@@ -44,7 +44,7 @@
             </div>
         </div>
     </nav>
-    
+
     <div class="px-6 py-6">
         {% block content %}
         {% endblock %}

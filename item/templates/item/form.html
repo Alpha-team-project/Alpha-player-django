@@ -10,7 +10,7 @@
     {% csrf_token %}
     <div class="flex flex-col items-center justify-center dark:text-black">
         <div class="space-y-4 flex flex-col justify-center dark:text-white  md:w-1/2 dark:bg-gray-800 p-6 rounded-xl shadow-xl">
-            {{ form.as_p }} 
+            {{ form.as_p }}
             {% if form.errors or form.non_field_errors %}
             <div class="mb-3 p-6 bg-red-100 dark:bg-red-500 rounded-xl">
                 {% for field in form %}

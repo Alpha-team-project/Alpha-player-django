@@ -23,6 +23,7 @@ def test_browse_page_title(driver):
 
     assert driver.title == "Items | Alpha player"
 
+
 def test_contact_page_title(driver):
     home_page = HomePage(driver)
 
@@ -30,6 +31,7 @@ def test_contact_page_title(driver):
     contact_button.click()
 
     assert driver.title == "Contact | Alpha player"
+
 
 def test_dashboard_page_title(driver):
     home_page = HomePage(driver)
@@ -50,6 +52,7 @@ def test_dashboard_page_title(driver):
     dashboard_button.click()
 
     assert driver.title == "Dashboard | Alpha player"
+
 
 def test_browse_page_search_field(driver):
     home_page = HomePage(driver)
