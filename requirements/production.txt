@@ -1,4 +1,4 @@
-django==4.2.21
+django==4.2.23
 django-tailwind
 django-browser-reload
 pillow
